@@ -1,2 +1,39 @@
-Hello world!
-Foo - Bar
+
+
+This is a database of physics problems coming from the international physics olympiad... here you can find the tools needed to process such problems.
+
+
+INTRODUCTION
+
+
+As this project main objective is to build a database of problems, each one writen with latex, here there should be a directory structure like this one:
+
+year
+ |
+ + Problem1
+ |  |
+ |  - Problem1.tex
+ |  - figure1.jpg
+ |  - figure2.png
+ |
+ |
+ + Problem2
+
+As every problem was typed on a windows machine by a student knowing nothing about computers, latex, and so on, here you can find 
+tools to merge the problems in a computer friendly fashion.
+
+
+BASIC USAGE
+
+
+1. Copy every .tex file into a .tex.old file
+2. use problem_to_utf8.sh to transcode these problems into utf8 if needed
+3. use convert_figures.sh to modify .tex into .tex.out with figures renamed to an unambiguous filename
+4. use cut_problem.sh to extract the problems from each .tex.out file
+
+feel free to open the .sh and .py files to get more information
+
+questions and suggestions welcomed to:
+
+garciamx@gmail.com
+
