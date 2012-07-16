@@ -6,5 +6,7 @@
 
 find -name '*tex.out' -printf '%h %f\n' | while read dname fname; do
     target="${fname%.tex.out}.prob"
-    sed -n -r '/\\begin\{prob\}/,/\\end\{prob\}/p' < $dname/$fname > $dname/$target
+
+    sed -n -r -f cut_problem.sed < $dname/$fname > $dname/$target
+    #sed -n -r '/\\begin\{prob\}/,/\\end\{prob\}/p' < $dname/$fname > $dname/$target
 done
