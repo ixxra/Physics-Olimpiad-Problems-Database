@@ -6,12 +6,25 @@
 
 exam_year=$1
 
+#TODO: This is nasty... and error prone... check if you can 
+#figure out a better way to generate header info
+OLD_IFS="$IFS"
+IFS=','
+declare -a line=( $(grep $exam_year ipho-host-countries) )
+ number=${line[0]}
+   year=${line[1]}
+country=${line[2]}
+   city=${line[3]}
+IFS="$OLD_IFS"
+
+
 cat<<EOF 
 \documentclass[10pt,a4paper]{amsart}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage{float}
 \usepackage{array}
+\usepackage{enumerate}
 \usepackage{amssymb}
 \usepackage{textcomp}
 \usepackage[spanish,activeacute]{babel}
@@ -22,7 +35,8 @@ cat<<EOF
 \usepackage[letterpaper]{geometry}
 \geometry{verbose,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
 
-\title{Prueba teórica de la olimpiada estatal de física de $exam_year}
+\title{$number Olimpiada Internacional de Física\\\\
+ $city, $country, $year}
 
 \begin{document}
 \maketitle
